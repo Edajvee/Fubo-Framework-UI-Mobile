@@ -70,10 +70,8 @@ formatter.match({
   "location": "FuboLoginSteps.user_should_be_logged_into_their_account_under(String)"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError\n\tat org.junit.Assert.fail(Assert.java:86)\n\tat org.junit.Assert.assertTrue(Assert.java:41)\n\tat org.junit.Assert.assertTrue(Assert.java:52)\n\tat ui.steps.FuboLoginSteps.user_should_be_logged_into_their_account_under(FuboLoginSteps.java:58)\n\tat ✽.user should be logged into their account under \"https://www.fubo.tv/home\"(src/test/resources/ui/FuboHomePage.feature:9)\n",
-  "status": "failed"
+  "status": "passed"
 });
-formatter.embedding("image/png", "embedded0.png");
 formatter.after({
   "status": "passed"
 });

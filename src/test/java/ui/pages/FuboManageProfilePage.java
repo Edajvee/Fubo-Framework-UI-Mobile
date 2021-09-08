@@ -13,7 +13,11 @@ public class FuboManageProfilePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//img[@class='avatar-icon']")
+    @FindBy(xpath = "//div[@class='see-less-often']/span")
+    public WebElement seeLessOftenButton;
+
+    @FindBy(xpath = "//span[@class='profile']")
     public WebElement dajvesProfile;
 
 }
+
