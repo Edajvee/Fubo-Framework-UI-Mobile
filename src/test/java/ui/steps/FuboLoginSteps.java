@@ -5,7 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import ui.pages.FuboHomePage;
 import ui.pages.FuboLoginPage;
 import ui.pages.FuboManageProfilePage;
@@ -19,7 +19,6 @@ public class FuboLoginSteps {
     FuboLoginPage fuboLoginPage = new FuboLoginPage(driver);
     FuboManageProfilePage fuboManageProfilePage = new FuboManageProfilePage(driver);
     FuboPickYourFavoriteTeamsPage fuboPickYourFavoriteTeamsPage = new FuboPickYourFavoriteTeamsPage(driver);
-
 
     @Given("^user is on \"([^\"]*)\"$")
     public void user_is_on(String fuboHomePage) throws Exception {

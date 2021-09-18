@@ -10,23 +10,23 @@ import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
-    private static WebDriver driver; // declare WebDriver object
+    private static WebDriver driver;
 
     private Driver() {
     }
 
-    public static WebDriver getDriver() { //before --> public static WebDriver getDriver(String browser) {
+    public static WebDriver getDriver() {
         String browser = System.getenv("BROWSER");
         if (browser == null) {
 
-            switch (ConfigReader.getProperty("browser")) { // reads a key from configuration.properties // before --> switch(browser)
+            switch (ConfigReader.getProperty("browser")) {
                 case "firefox":
-                    WebDriverManager.firefoxdriver().setup(); // this is BoniGarcia method
+                    WebDriverManager.firefoxdriver().setup();
                     driver = new FirefoxDriver();
                     break;
                 case "chrome":
-                    WebDriverManager.chromedriver().setup(); // this is BoniGarcia method
-                    driver = new ChromeDriver(); // initialize WebDriver object
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
                 case "edge":
                     WebDriverManager.edgedriver().setup();
                     driver = new EdgeDriver();

@@ -1,6 +1,6 @@
 package mobile.steps;
 
-import cucumber.api.PendingException;
+
 import cucumber.api.java.en.Given;
 import mobile.utils.CommonUtils;
 

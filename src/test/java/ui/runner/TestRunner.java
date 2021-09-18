@@ -5,10 +5,10 @@ import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/ui"// to feature files so we need to update the path
-        ,glue={"ui/steps"}//points to ui.steps so we need to update package name
+        features = "src/test/resources/ui"
+        ,glue={"ui/steps"}
         ,tags={"@login"}
-        ,plugin = {"pretty","html:target/cucumber-reports/ui"}//This is html report created by  Cucumber
+        ,plugin = {"pretty","html:target/cucumber-reports/ui"}
         ,dryRun = false
 )
 public class TestRunner {

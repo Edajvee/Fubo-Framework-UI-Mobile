@@ -23,7 +23,4 @@ public class CommonUtils {
             System.out.println("Scenario is passed!");
         }
     }
-
-
-
 }

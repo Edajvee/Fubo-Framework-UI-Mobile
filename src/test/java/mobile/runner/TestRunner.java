@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/mobile"//points to feature files so we need to update the path
-        ,glue={"mobile/steps"}//points to mobile.steps so we need to update package name
+        features = "src/test/resources/mobile"
+        ,glue={"mobile/steps"}
         ,tags={"@openApp"}
-        ,plugin = {"pretty","html:target/cucumber-reports/mobile"}//This is html report created by  Cucumber
+        ,plugin = {"pretty","html:target/cucumber-reports/mobile"}
 )
 public class TestRunner {
     /**

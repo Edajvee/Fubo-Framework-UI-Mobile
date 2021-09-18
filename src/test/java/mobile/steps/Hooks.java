@@ -7,10 +7,10 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 import mobile.utils.DesiredCapabilitiesUtils;
-import org.openqa.selenium.WebDriver;
+
 import ui.utils.ConfigReader;
 
-import java.net.MalformedURLException;
+
 
 public class Hooks {
     public static AndroidDriver<AndroidElement> androidDriver;
@@ -26,8 +26,6 @@ public class Hooks {
             default:
                 throw new Exception("No setup found for device!");
         }
-
-
     }
 
     @After
@@ -39,5 +37,4 @@ public class Hooks {
                 androidDriver.quit();
         }
     }
-
 }

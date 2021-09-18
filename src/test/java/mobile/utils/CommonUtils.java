@@ -6,7 +6,6 @@ import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.touch.TapOptions;
-import io.appium.java_client.touch.offset.ElementOption;
 import ui.utils.ConfigReader;
 
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
@@ -15,6 +14,7 @@ import static io.appium.java_client.touch.offset.PointOption.point;
 import static java.time.Duration.ofSeconds;
 
 public class CommonUtils {
+
     static int waitDuration = Integer.parseInt(ConfigReader.getProperty("waitDuration"));
 
     /**
@@ -35,6 +35,9 @@ public class CommonUtils {
         touchAction(driver).tap(TapOptions.tapOptions().withElement(element(driver.findElementByAndroidUIAutomator("new UiSelector().text(\"" + visibleText + "\")")))).perform();
     }
 
+    public static void tapByElement(IOSDriver<IOSElement> driver, String visibleText) { // What method for ios??
+        touchAction(driver).tap(TapOptions.tapOptions().withElement(element(driver.findElementByIos("new UiSelector().text(\"" + visibleText + "\")")))).perform();
+    }
 
     /**
      * This class initializes the object of TouchAction class
@@ -54,7 +57,18 @@ public class CommonUtils {
         return driver.findElementByAndroidUIAutomator("new UiSelector().text(\"" + visibleText + "\")");
     }
 
+    public static IOSElement elementByText(IOSDriver<AndroidElement> driver, String visibleText) {
+        //what method do I use??
+        return driver.findElementByAndroidUIAutomator("new UiSelector().text(\"" + visibleText + "\")");
+    }
+
     public static void tapByCoordinates(AndroidDriver<AndroidElement> driver, int x, int y) {
+        touchAction(driver)
+                .tap(point(x, y))
+                .waitAction(waitOptions(ofSeconds(waitDuration))).perform();
+    }
+
+    public static void tapByCoordinates(IOSDriver<IOSElement> driver, int x, int y) {
         touchAction(driver)
                 .tap(point(x, y))
                 .waitAction(waitOptions(ofSeconds(waitDuration))).perform();
@@ -64,7 +78,20 @@ public class CommonUtils {
         driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector())" + ".scrollIntoView(text(\"" + visibleText + "\"))");
     }
 
+    public static void scrollToElement(IOSDriver<IOSElement> driver, String visibleText) {
+        //what method do I use
+        driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector())" + ".scrollIntoView(text(\"" + visibleText + "\"))");
+    }
+
     public static void pressByElement(AndroidDriver<AndroidElement> driver, AndroidElement element, long seconds) {
+        touchAction(driver)
+                .press(element(element))
+                .waitAction(waitOptions(ofSeconds(seconds)))
+                .release()
+                .perform();
+    }
+
+    public static void pressByElement(IOSDriver<IOSElement> driver, AndroidElement element, long seconds) {
         touchAction(driver)
                 .press(element(element))
                 .waitAction(waitOptions(ofSeconds(seconds)))
@@ -80,5 +107,11 @@ public class CommonUtils {
                 .perform();
     }
 
-
+    public static void pressByCoordinates(IOSDriver<IOSElement> driver, int x, int y, long seconds) {
+        new TouchAction(driver)
+                .press(point(x, y))
+                .waitAction(waitOptions(ofSeconds(seconds)))
+                .release()
+                .perform();
+    }
 }
