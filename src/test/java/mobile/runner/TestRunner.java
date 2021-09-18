@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = "src/test/resources/mobile"//points to feature files so we need to update the path
         ,glue={"mobile/steps"}//points to mobile.steps so we need to update package name
-        ,tags={"@mobileBrowser"}
+        ,tags={"@openApp"}
         ,plugin = {"pretty","html:target/cucumber-reports/mobile"}//This is html report created by  Cucumber
 )
 public class TestRunner {

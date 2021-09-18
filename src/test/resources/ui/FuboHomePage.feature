@@ -1,7 +1,7 @@
+@login
 Feature:
   Background:
     Given user is on "https://www.fubo.tv/welcome"
-@login
   Scenario: Test Login functionality
     Given user clicks "sign in" button
     When user enters correct credentials

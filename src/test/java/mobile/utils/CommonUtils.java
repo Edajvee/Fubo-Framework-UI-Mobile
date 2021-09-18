@@ -3,6 +3,8 @@ package mobile.utils;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import ui.utils.ConfigReader;
@@ -25,6 +27,10 @@ public class CommonUtils {
         touchAction(driver).tap(TapOptions.tapOptions().withElement(element(androidElement))).perform();
     }
 
+    public static void tapByElement(IOSDriver<IOSElement> driver, IOSElement IOSElement) {
+        touchAction(driver).tap(TapOptions.tapOptions().withElement(element(IOSElement))).perform();
+    }
+
     public static void tapByElement(AndroidDriver<AndroidElement> driver, String visibleText) {
         touchAction(driver).tap(TapOptions.tapOptions().withElement(element(driver.findElementByAndroidUIAutomator("new UiSelector().text(\"" + visibleText + "\")")))).perform();
     }
@@ -37,6 +43,10 @@ public class CommonUtils {
      * @returns to object of TouchAction class
      */
     public static TouchAction touchAction(AndroidDriver<AndroidElement> driver) {
+        return new TouchAction(driver);
+    }
+
+    public static TouchAction touchAction(IOSDriver<IOSElement> driver) {
         return new TouchAction(driver);
     }
 

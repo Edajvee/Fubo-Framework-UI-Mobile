@@ -9,7 +9,7 @@ public class Hooks {
     public static WebDriver driver;
 
     @Before
-    public void openBrowser() {
+    public void setup() {
         driver = Driver.getDriver();//starts the driver
     }
     @After

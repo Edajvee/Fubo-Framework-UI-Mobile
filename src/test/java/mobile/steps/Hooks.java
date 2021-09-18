@@ -4,6 +4,8 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSElement;
 import mobile.utils.DesiredCapabilitiesUtils;
 import org.openqa.selenium.WebDriver;
 import ui.utils.ConfigReader;
@@ -12,34 +14,30 @@ import java.net.MalformedURLException;
 
 public class Hooks {
     public static AndroidDriver<AndroidElement> androidDriver;
-    public static WebDriver webDriver;
-
+    public static IOSDriver<IOSElement> iosDriver;
 
     @Before
-    public void openBrowser() throws MalformedURLException {
-        switch (ConfigReader.getProperty("testing")) {
-            case "browser":
-                webDriver = DesiredCapabilitiesUtils.setupWebDriver();
-                break;
-            case "app":
+    public void setup() throws Exception {
+        switch (ConfigReader.getProperty("device")) {
+            case "ios":
+                iosDriver = DesiredCapabilitiesUtils.setupIOSDesiredCapabilities();
+            case "android":
                 androidDriver = DesiredCapabilitiesUtils.setupAndroidDesiredCapabilities();
-                break;
+            default:
+                throw new Exception("No setup found for device!");
         }
 
-    }
 
+    }
 
     @After
     public void tearDown() {
-        switch (ConfigReader.getProperty("testing")) {
-            case "browser":
-                webDriver.quit();
-                break;
-            case "app":
+        switch (ConfigReader.getProperty("device")) {
+            case "ios":
+                iosDriver.quit();
+            case "android":
                 androidDriver.quit();
-                break;
         }
     }
-
 
 }
